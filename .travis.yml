@@ -1,0 +1,33 @@
+dist: trusty
+sudo: required
+
+services: docker
+
+language: bash
+
+branches:
+  only:
+    - master
+
+before_script:
+  - env | sort
+  - name="roundcube"
+  - image="monogramm/docker-roundcube:${VERSION}${VARIANT:+-$VARIANT}"
+  - dir="images/${VERSION}${VARIANT:+-$VARIANT}"
+
+script:
+  - travis_retry docker build -t "$image" "$dir"
+
+after_script:
+  - docker images
+  - docker run --name "$name" -d "$image" "$dir"
+  - docker ps
+  - docker logs "$name"
+
+notifications:
+  email: false
+
+env: # Environments
+    - VERSION=elastic
+    - VERSION=1.3 VARIANT=-fpm
+    - VERSION=1.3 VARIANT=-apache
