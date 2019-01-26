@@ -29,5 +29,5 @@ notifications:
 
 env: # Environments
     - VERSION=elastic
-    - VERSION=1.3 VARIANT=-fpm
-    - VERSION=1.3 VARIANT=-apache
+    - VERSION=1.3 VARIANT=fpm
+    - VERSION=1.3 VARIANT=apache

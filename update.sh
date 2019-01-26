@@ -61,7 +61,7 @@ for latest in "${latests[@]}"; do
 				s/%%VERSION%%/'"$latest"'/g;
 			' "$dir/Dockerfile"
 
-			travisEnv='\n    - VERSION='"$version"' VARIANT=-'"$variant$travisEnv"
+			travisEnv='\n    - VERSION='"$version"' VARIANT='"$variant$travisEnv"
 
 			if [[ $1 == 'build' ]]; then
 				tag="$version-$variant"
