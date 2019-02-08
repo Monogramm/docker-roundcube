@@ -9,12 +9,11 @@ RUN set -ex; \
 	apt-get install -y --no-install-recommends \
         libgpgme11 \
         libgpgme11-dev \
+        php-net-sieve \
 	; \
 	\
     pecl install gnupg; \
     \
-	docker-php-ext-enable gnupg; \
-    \
-    pear install Net_Sieve
+	docker-php-ext-enable gnupg;
 
 VOLUME /var/roundcube/keys
