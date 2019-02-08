@@ -13,6 +13,10 @@ RUN set -ex; \
         wget \
 	; \
 	\
+    curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer; \
+    composer --version; \
+	\
+	\
     pecl install gnupg; \
     \
 	docker-php-ext-enable gnupg; \
