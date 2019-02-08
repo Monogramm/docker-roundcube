@@ -7,16 +7,13 @@ RUN set -ex; \
 	apk add --no-cache --virtual \
         libgpgme11 \
         libgpgme11-dev \
-        wget \
 	; \
-	\
-    curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer; \
-    composer --version; \
 	\
     pecl install gnupg; \
     \
 	docker-php-ext-enable gnupg; \
     \
-    composer install pear/net_sieve
+    echo 'PEAR is currently down, so Net_Sieve cannot be installed!!'
+    #pear install Net_Sieve
 
 VOLUME /var/roundcube/keys
