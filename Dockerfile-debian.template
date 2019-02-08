@@ -7,7 +7,6 @@ RUN set -ex; \
 	apt-get update; \
 	\
 	apt-get install -y --no-install-recommends \
-        composer \
         libgpgme11 \
         libgpgme11-dev \
         wget \
@@ -15,7 +14,6 @@ RUN set -ex; \
 	\
     curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer; \
     composer --version; \
-	\
 	\
     pecl install gnupg; \
     \
