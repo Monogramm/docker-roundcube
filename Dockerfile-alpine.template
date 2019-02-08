@@ -5,6 +5,7 @@ LABEL maintainer="mathieu.brunot at monogramm dot io"
 # Add requirements for common extenions (untested so far)
 RUN set -ex; \
 	apk add --no-cache --virtual \
+        composer \
         libgpgme11 \
         libgpgme11-dev \
         wget \
@@ -14,8 +15,6 @@ RUN set -ex; \
     \
 	docker-php-ext-enable gnupg; \
     \
-    wget -O /tmp/Net_Sieve_1.4.4.tar.gz https://github.com/pear/Net_Sieve/archive/1.4.4.tar.gz; \
-    pear install /tmp/Net_Sieve_1.4.4.tar.gz; \
-    rm -f /tmp/Net_Sieve_1.4.4.tar.gz
+    composer install pear/net_sieve
 
 VOLUME /var/roundcube/keys
