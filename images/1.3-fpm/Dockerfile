@@ -15,6 +15,8 @@ RUN set -ex; \
     \
 	docker-php-ext-enable gnupg; \
     \
-    pear install https://github.com/pear/Net_Sieve/archive/1.4.4.tar.gz
+    wget -O /tmp/Net_Sieve_1.4.4.tar.gz https://github.com/pear/Net_Sieve/archive/1.4.4.tar.gz; \
+    pear install /tmp/Net_Sieve_1.4.4.tar.gz; \
+    rm -f /tmp/Net_Sieve_1.4.4.tar.gz
 
 VOLUME /var/roundcube/keys
