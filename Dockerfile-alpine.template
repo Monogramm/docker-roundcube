@@ -13,7 +13,6 @@ RUN set -ex; \
     \
 	docker-php-ext-enable gnupg; \
     \
-    echo 'PEAR is currently down, so Net_Sieve cannot be installed!!'
-    #pear install Net_Sieve
+    pear install Net_Sieve
 
 VOLUME /var/roundcube/keys
