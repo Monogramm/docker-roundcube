@@ -1,6 +1,6 @@
 FROM roundcube/roundcubemail:1.3.8-apache
 
-LABEL maintainer="mathieu.brunot at monogramm dot io"
+LABEL maintainer="Mathieu BRUNOT <mathieu.brunot at monogramm dot io>"
 
 # Add requirements for common extenions
 RUN set -ex; \
@@ -15,6 +15,8 @@ RUN set -ex; \
     \
 	docker-php-ext-enable gnupg; \
     \
-    pear install Net_Sieve
+    pear install Net_Sieve; \
+    \
+    pear install Net_LDAP3
 
 VOLUME /var/roundcube/keys
