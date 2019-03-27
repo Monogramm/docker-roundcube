@@ -6,6 +6,8 @@
 [![Build Status](https://travis-ci.org/Monogramm/docker-roundcube.svg)](https://travis-ci.org/Monogramm/docker-roundcube)
 [![Docker Automated buid](https://img.shields.io/docker/build/monogramm/docker-roundcube.svg)](https://hub.docker.com/r/monogramm/docker-roundcube/)
 [![Docker Pulls](https://img.shields.io/docker/pulls/monogramm/docker-roundcube.svg)](https://hub.docker.com/r/monogramm/docker-roundcube/)
+[![](https://images.microbadger.com/badges/version/monogramm/docker-roundcube.svg)](https://microbadger.com/images/monogramm/docker-roundcube)
+[![](https://images.microbadger.com/badges/image/monogramm/docker-roundcube.svg)](https://microbadger.com/images/monogramm/docker-roundcube)
 
 # RoundCube custom Docker
 
