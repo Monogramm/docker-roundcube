@@ -6,14 +6,15 @@ LABEL maintainer="Mathieu BRUNOT <mathieu.brunot at monogramm dot io>"
 RUN set -ex; \
 	apk add --no-cache --virtual \
         libgpgme11 \
-        libgpgme11-dev \
-        php-net-ldap3 \
+        libgpgme11-dev
 	; \
 	\
     pecl install gnupg; \
     \
 	docker-php-ext-enable gnupg; \
     \
-    pear install horde/Horde_ManageSieve
+    pear install horde/Horde_ManageSieve; \
+    \
+    pear install pear/net_ldap2
 
 VOLUME /var/roundcube/keys

@@ -8,14 +8,15 @@ RUN set -ex; \
 	\
 	apt-get install -y --no-install-recommends \
         libgpgme11 \
-        libgpgme11-dev \
-        php-net-ldap3 \
+        libgpgme11-dev
 	; \
 	\
     pecl install gnupg; \
     \
 	docker-php-ext-enable gnupg; \
     \
-    pear install horde/Horde_ManageSieve
+    pear install horde/Horde_ManageSieve; \
+    \
+    pear install pear/net_ldap2
 
 VOLUME /var/roundcube/keys
