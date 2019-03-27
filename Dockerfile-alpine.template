@@ -6,7 +6,7 @@ LABEL maintainer="Mathieu BRUNOT <mathieu.brunot at monogramm dot io>"
 RUN set -ex; \
 	apk add --no-cache --virtual \
         libgpgme11 \
-        libgpgme11-dev
+        libgpgme11-dev \
 	; \
 	\
     pecl install gnupg; \

@@ -8,7 +8,7 @@ RUN set -ex; \
 	\
 	apt-get install -y --no-install-recommends \
         libgpgme11 \
-        libgpgme11-dev
+        libgpgme11-dev \
 	; \
 	\
     pecl install gnupg; \
