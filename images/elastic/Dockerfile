@@ -15,7 +15,7 @@ RUN set -ex; \
     \
 	docker-php-ext-enable gnupg; \
     \
-    pear install horde/Horde_ManageSieve; \
+    pear install Net_Sieve; \
     \
     pear install pear/net_ldap2
 
