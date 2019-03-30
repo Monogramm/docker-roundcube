@@ -20,7 +20,8 @@ RUN set -ex; \
     \
     pear install Net_Sieve; \
     \
-    composer require pear/net_ldap2 kolab/net_ldap3 mkopinsky/zxcvbn-php \
+    composer --working-dir=/usr/src/roundcubemail/ \
+        require pear/net_ldap2 kolab/net_ldap3 mkopinsky/zxcvbn-php \
         --prefer-dist --prefer-stable --update-no-dev \
         --no-interaction --optimize-autoloader --apcu-autoloader
 
