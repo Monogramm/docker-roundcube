@@ -5,7 +5,9 @@ LABEL maintainer="Mathieu BRUNOT <mathieu.brunot at monogramm dot io>"
 # Add requirements for common extenions (untested so far)
 RUN set -ex; \
     apk add --no-cache --virtual \
+        autoconf \
         gpgme \
+        gpgme-dev \
     ; \
     curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer; \
     \
