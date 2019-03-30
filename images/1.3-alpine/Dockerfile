@@ -28,6 +28,6 @@ RUN set -ex; \
         --prefer-dist --prefer-stable --update-no-dev \
         --no-interaction --optimize-autoloader --apcu-autoloader; \
     \
-	apk --purge del .build-deps; \
+	apk --purge del .build-deps
 
 VOLUME /var/roundcube/keys
