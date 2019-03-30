@@ -26,7 +26,7 @@ RUN set -ex; \
     \
     composer --working-dir=/usr/src/roundcubemail/ \
         require pear/net_ldap2 kolab/net_ldap3 mkopinsky/zxcvbn-php \
-        --prefer-dist --prefer-stable --update-no-dev \
+        --prefer-dist --prefer-stable --no-update \
         --no-interaction --optimize-autoloader --apcu-autoloader; \
     \
 	apk --purge del .build-deps
