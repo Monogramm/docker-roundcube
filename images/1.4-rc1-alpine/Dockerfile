@@ -1,12 +1,10 @@
-FROM monogramm/docker-roundcube-base:1.3.8-apache
+FROM monogramm/docker-roundcube-base:1.4-rc1-alpine
 
 LABEL maintainer="Mathieu BRUNOT <mathieu.brunot at monogramm dot io>"
 
-# Add requirements for common extenions
+# Add requirements for common extenions (untested so far)
 RUN set -ex; \
-    apt-get update; \
-    \
-    apt-get install -y --no-install-recommends \
+    apk add --no-cache --virtual \
         libgpgme11 \
         libgpgme11-dev \
     ; \

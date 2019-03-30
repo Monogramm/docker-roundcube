@@ -27,14 +27,17 @@ https://hub.docker.com/r/monogramm/docker-roundcube/
 
 -	`1.3.8-apache`, `1.3-apache`, `production-apache`, `1.3.8`, `1.3`, `production` (*images/1.3.8-apache/Dockerfile*)
 -	`1.3.8-fpm`, `1.3-fpm`, `production-fpm` (*images/1.3.8-fpm/Dockerfile*)
--	`elastic`, `latest` (*images/elastic/Dockerfile*)
+-	`1.3.8-alpine`, `1.3-alpine`, `production-alpine` (*images/1.3.8-alpine/Dockerfile*)
+-	`1.4-rc1-apache`, `1.4-apache`, `latest-apache`, `1.4-rc1`, `1.4`, `latest` (*images/1.4-rc1-apache/Dockerfile*)
+-	`1.4-rc1-fpm`, `1.4-fpm`, `latest-fpm` (*images/1.4-rc1-fpm/Dockerfile*)
+-	`1.4-rc1-alpine`, `1.4-alpine`, `latest-alpine` (*images/1.4-rc1-alpine/Dockerfile*)
 
 ## How to run this image ?
 
 See RoundCube base image documentation for details.
 
-> [RoundCube GitHub](https://github.com/roundcube/roundcubemail-docker)
-> [RoundCube DockerHub](https://hub.docker.com/r/roundcube/roundcubemail/)
+> [RoundCube GitHub](https://github.com/Monogramm/roundcubemail-docker)
+> [RoundCube DockerHub](https://hub.docker.com/r/monogramm/docker-roundcube-base/)
 
 # Questions / Issues
 If you got any questions or problems using the image, please visit our [Github Repository](https://github.com/Monogramm/docker-roundcube) and write an issue.

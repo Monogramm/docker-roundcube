@@ -1,4 +1,4 @@
-FROM roundcube/roundcubemail:%%VERSION%%%%VARIANT%%
+FROM monogramm/docker-roundcube-base:%%VERSION%%%%VARIANT%%
 
 LABEL maintainer="Mathieu BRUNOT <mathieu.brunot at monogramm dot io>"
 

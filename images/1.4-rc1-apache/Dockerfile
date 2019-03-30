@@ -1,4 +1,4 @@
-FROM roundcube/roundcubemail:elastic
+FROM monogramm/docker-roundcube-base:1.4-rc1-apache
 
 LABEL maintainer="Mathieu BRUNOT <mathieu.brunot at monogramm dot io>"
 
