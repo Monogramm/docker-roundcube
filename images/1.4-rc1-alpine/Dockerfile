@@ -1,14 +1,18 @@
-FROM monogramm/docker-roundcube-base:1.3.8-apache
+FROM monogramm/docker-roundcube-base:1.4-rc1-alpine
 
 LABEL maintainer="Mathieu BRUNOT <mathieu.brunot at monogramm dot io>"
 
-# Add requirements for common extenions
+# Add requirements for common extenions (untested so far)
 RUN set -ex; \
-    apt-get update; \
-    \
-    apt-get install -y --no-install-recommends \
-        libgpgme11 \
-        libgpgme11-dev \
+    apk add --no-cache \
+        gpgme \
+    ; \
+	apk add --no-cache --virtual .build-deps \
+		$PHPIZE_DEPS \
+        autoconf \
+		gcc \
+		g++ \
+        gpgme-dev \
     ; \
     curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer; \
     \
@@ -22,6 +26,8 @@ RUN set -ex; \
     \
     composer require pear/net_ldap2 kolab/net_ldap3 mkopinsky/zxcvbn-php \
         --prefer-dist --prefer-stable --update-no-dev \
-        --no-interaction --optimize-autoloader --apcu-autoloader
+        --no-interaction --optimize-autoloader --apcu-autoloader; \
+    \
+	apk --purge del .build-deps
 
 VOLUME /var/roundcube/keys

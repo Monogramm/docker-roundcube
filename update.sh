@@ -10,6 +10,7 @@ declare -A base=(
 variants=(
 	apache
 	fpm
+	alpine
 )
 
 min_version='1.3'
@@ -24,9 +25,7 @@ dockerRepo="monogramm/docker-roundcube"
 # Retrieve automatically the latest versions
 latests=(
 	'1.3.8'
-)
-specialLatests=(
-	elastic
+	'1.4-rc1'
 )
 
 # Remove existing images
@@ -69,42 +68,6 @@ for latest in "${latests[@]}"; do
 				docker build -t ${dockerRepo}:${tag} $dir
 			fi
 		done
-	fi
-
-done
-
-for latest in "${specialLatests[@]}"; do
-	version=$(echo "$latest" | cut -d. -f1-2)
-
-	if [ -d "$version" ]; then
-		continue
-	fi
-
-	# Only add versions >= "$min_version"
-	if version_greater_or_equal "$version" "$min_version"; then
-
-		echo "updating $latest [$version]"
-
-		# Create the version directory with a Dockerfile.
-		dir="images/$version"
-		mkdir -p "$dir"
-
-		template="Dockerfile-debian.template"
-		cp "$template" "$dir/Dockerfile"
-
-		# Replace the variables.
-		sed -ri -e '
-			s/%%VARIANT%%//g;
-			s/%%VERSION%%/'"$latest"'/g;
-		' "$dir/Dockerfile"
-
-		travisEnv='\n    - VERSION='"$version$travisEnv"
-
-		if [[ $1 == 'build' ]]; then
-			tag="$version"
-			echo "Build Dockerfile for ${tag}"
-			docker build -t ${dockerRepo}:${tag} $dir
-		fi
 	fi
 
 done
