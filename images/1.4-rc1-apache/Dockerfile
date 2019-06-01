@@ -23,7 +23,7 @@ RUN set -ex; \
     \
     composer \
         --working-dir=/usr/src/roundcubemail/ \
-        --prefer-dist --no-update \
+        --no-update \
         --no-interaction --optimize-autoloader --apcu-autoloader \
         require \
             pear/net_ldap2 \
