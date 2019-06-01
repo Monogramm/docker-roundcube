@@ -1,6 +1,12 @@
 #!/bin/bash
 set -eo pipefail
 
+declare -A compose=(
+	[apache]='apache'
+	[fpm]='fpm'
+	[alpine]='fpm'
+)
+
 declare -A base=(
 	[apache]='debian'
 	[fpm]='debian'
@@ -59,6 +65,9 @@ for latest in "${latests[@]}"; do
 				s/%%VARIANT%%/-'"$variant"'/g;
 				s/%%VERSION%%/'"$latest"'/g;
 			' "$dir/Dockerfile"
+
+			cp ".dockerignore" "$dir/.dockerignore"
+			cp "docker-compose_${compose[$variant]}.yml" "$dir/docker-compose.yml"
 
 			travisEnv='\n    - VERSION='"$version"' VARIANT='"$variant$travisEnv"
 
