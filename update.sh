@@ -4,7 +4,7 @@ set -eo pipefail
 declare -A compose=(
 	[apache]='apache'
 	[fpm]='fpm'
-	[fpm-alpine]='fpm'
+	[alpine]='fpm'
 )
 
 declare -A base=(
