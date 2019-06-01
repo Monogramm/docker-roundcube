@@ -27,13 +27,13 @@ RUN set -ex; \
     \
     composer \
         --working-dir=/usr/src/roundcubemail/ \
-        --prefer-dist --prefer-stable --no-update \
+        --prefer-dist --no-update \
         --no-interaction --optimize-autoloader --apcu-autoloader \
         require \
             pear/net_ldap2 \
             kolab/net_ldap3 \
             mkopinsky/zxcvbn-php \
-            johndoh/contextmenu:2.3 \
+            johndoh/contextmenu \
     ; \
     \
 	apk --purge del .build-deps
