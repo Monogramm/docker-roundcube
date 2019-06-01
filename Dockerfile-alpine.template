@@ -5,8 +5,10 @@ LABEL maintainer="Mathieu BRUNOT <mathieu.brunot at monogramm dot io>"
 # Add requirements for common extenions (untested so far)
 RUN set -ex; \
     apk add --no-cache \
+        git \
         gpgme \
     ; \
+    \
 	apk add --no-cache --virtual .build-deps \
 		$PHPIZE_DEPS \
         autoconf \

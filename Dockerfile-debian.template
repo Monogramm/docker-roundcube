@@ -5,8 +5,8 @@ LABEL maintainer="Mathieu BRUNOT <mathieu.brunot at monogramm dot io>"
 # Add requirements for common extenions
 RUN set -ex; \
     apt-get update; \
-    \
     apt-get install -y --no-install-recommends \
+        git \
         libgpgme11 \
         libgpgme11-dev \
     ; \
