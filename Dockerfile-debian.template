@@ -23,13 +23,19 @@ RUN set -ex; \
     \
     composer \
         --working-dir=/usr/src/roundcubemail/ \
-        --no-update \
-        --no-interaction --optimize-autoloader --apcu-autoloader \
+        --prefer-dist --prefer-stable \
+        --no-update --no-interaction \
+        --optimize-autoloader --apcu-autoloader \
         require \
             pear/net_ldap2 \
             kolab/net_ldap3 \
             mkopinsky/zxcvbn-php \
-            johndoh/contextmenu \
-    ;
+    ; \
+    composer \
+        --working-dir=/usr/src/roundcubemail/ \
+        --prefer-dist --no-dev \
+        --no-interaction \
+        --optimize-autoloader --apcu-autoloader \
+        update;
 
 VOLUME /var/roundcube/keys
