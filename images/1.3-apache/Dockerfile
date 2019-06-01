@@ -29,7 +29,7 @@ RUN set -ex; \
             pear/net_ldap2 \
             kolab/net_ldap3 \
             mkopinsky/zxcvbn-php \
-            johndoh/contextmenu \
+            johndoh/contextmenu:2.3 \
     ;
 
 VOLUME /var/roundcube/keys
