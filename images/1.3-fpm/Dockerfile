@@ -12,6 +12,7 @@ RUN set -ex; \
     ; \
     \
     curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer; \
+    mv composer.json-dist composer.json; \
     \
     pecl install gnupg; \
     docker-php-ext-enable gnupg; \
@@ -34,7 +35,8 @@ RUN set -ex; \
     composer \
         --working-dir=/usr/src/roundcubemail/ \
         --prefer-dist --no-dev \
-        --no-interaction --optimize-autoloader \
+        --no-interaction \
+        --optimize-autoloader --apcu-autoloader \
         update;
 
 VOLUME /var/roundcube/keys
