@@ -14,20 +14,26 @@ RUN set -ex; \
 		g++ \
         gpgme-dev \
     ; \
+    \
     curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer; \
     \
     pecl install gnupg; \
-    echo "\n" | pecl install apcu; \
-    \
     docker-php-ext-enable gnupg; \
+    \
+    echo "\n" | pecl install apcu; \
     docker-php-ext-enable apcu; \
     \
     pear install Net_Sieve; \
     \
-    composer --working-dir=/usr/src/roundcubemail/ \
-        require pear/net_ldap2 kolab/net_ldap3 mkopinsky/zxcvbn-php \
+    composer \
+        --working-dir=/usr/src/roundcubemail/ \
         --prefer-dist --prefer-stable --no-update \
-        --no-interaction --optimize-autoloader --apcu-autoloader; \
+        --no-interaction --optimize-autoloader --apcu-autoloader \
+        require \
+            pear/net_ldap2 \
+            kolab/net_ldap3 \
+            mkopinsky/zxcvbn-php \
+    ; \
     \
 	apk --purge del .build-deps
 
