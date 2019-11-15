@@ -1,4 +1,4 @@
-FROM monogramm/docker-roundcube-base:1.4-rc1-alpine
+FROM monogramm/docker-roundcube-base:1.4-alpine
 
 LABEL maintainer="Mathieu BRUNOT <mathieu.brunot at monogramm dot io>"
 
