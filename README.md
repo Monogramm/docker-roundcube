@@ -15,6 +15,11 @@ Custom Docker image for RoundCube.
 
 Provides a RoundCube with additional extensions for integrations of additional plugins.
 
+Additional plugins included:
+* https://github.com/sblaisot/automatic_addressbook
+* https://github.com/blind-coder/rcmcarddav
+* https://github.com/johndoh/roundcube-contextmenu
+
 ## What is RoundCube ?
 
 Roundcube Webmail is a browser-based multilingual IMAP client with an application-like user interface.
@@ -25,14 +30,14 @@ Roundcube Webmail is a browser-based multilingual IMAP client with an applicatio
 
 https://hub.docker.com/r/monogramm/docker-roundcube/
 
-* 1.3
-    -	`1.3.9-apache`, `1.3-apache`, `production-apache`, `1.3.9`, `1.3`, `production` (*images/1.3.9-apache/Dockerfile*)
-    -	`1.3.9-fpm`, `1.3-fpm`, `production-fpm` (*images/1.3.9-fpm/Dockerfile*)
-    -	`1.3.9-alpine`, `1.3-alpine`, `production-alpine` (*images/1.3.9-alpine/Dockerfile*)
-* 1.4
-    -	`1.4-apache`, `1.4-apache`, `latest-apache`, `1.4`, `1.4`, `latest` (*images/1.4-apache/Dockerfile*)
-    -	`1.4-fpm`, `1.4-fpm`, `latest-fpm` (*images/1.4-fpm/Dockerfile*)
-    -	`1.4-alpine`, `1.4-alpine`, `latest-alpine` (*images/1.4-alpine/Dockerfile*)
+* `master` branch
+    -	`1.4-apache`, `1.4-apache`, `production-apache`, `1.4`, `production` (*images/1.4-apache/Dockerfile*)
+    -	`1.4-fpm`, `1.4-fpm`, `production-fpm` (*images/1.4-fpm/Dockerfile*)
+    -	`1.4-alpine`, `1.4-alpine`, `production-alpine` (*images/1.4-alpine/Dockerfile*)
+* `develop` branch
+    -	`latest-apache`, `latest` (*images/1.4-apache/Dockerfile*)
+    -	`latest-fpm` (*images/1.4-fpm/Dockerfile*)
+    -	`latest-alpine` (*images/1.4-alpine/Dockerfile*)
 
 ## How to run this image ?
 

@@ -29,14 +29,11 @@ notifications:
 
 matrix:
   allow_failures:
-    - env: VERSION=1.3 VARIANT=alpine
+    - env: VERSION=1.3 VARIANT=fpm-alpine
     - env: VERSION=1.3 VARIANT=fpm
     - env: VERSION=1.3 VARIANT=apache
 
 env: # Environments
-    - VERSION=1.4 VARIANT=alpine
+    - VERSION=1.4 VARIANT=fpm-alpine
     - VERSION=1.4 VARIANT=fpm
     - VERSION=1.4 VARIANT=apache
-    - VERSION=1.3 VARIANT=alpine
-    - VERSION=1.3 VARIANT=fpm
-    - VERSION=1.3 VARIANT=apache

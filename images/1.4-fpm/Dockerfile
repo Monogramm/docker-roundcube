@@ -1,6 +1,6 @@
-FROM monogramm/docker-roundcube-base:1.4-fpm
+FROM roundcube/roundcubemail:1.4.x-fpm
 
-LABEL maintainer="Mathieu BRUNOT <mathieu.brunot at monogramm dot io>"
+LABEL maintainer="Monogramm Maintainers <opensource at monogramm dot io>"
 
 # Add requirements for common extenions
 RUN set -ex; \
@@ -33,12 +33,15 @@ RUN set -ex; \
             pear/net_ldap2 \
             kolab/net_ldap3 \
             mkopinsky/zxcvbn-php \
+            sblaisot/automatic_addressbook \
+            roundcube/carddav \
+            johndoh/contextmenu \
     ; \
     composer \
         --working-dir=/usr/src/roundcubemail/ \
         --prefer-dist --no-dev \
         --no-interaction \
         --optimize-autoloader --apcu-autoloader \
-        update;
+        install;
 
 VOLUME /var/roundcube/keys
