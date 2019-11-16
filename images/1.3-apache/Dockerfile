@@ -1,6 +1,6 @@
-FROM monogramm/docker-roundcube-base:1.3.9-apache
+FROM roundcube/roundcubemail:1.3-apache
 
-LABEL maintainer="Mathieu BRUNOT <mathieu.brunot at monogramm dot io>"
+LABEL maintainer="Monogramm Maintainers <opensource at monogramm dot io>"
 
 # Add requirements for common extenions
 RUN set -ex; \

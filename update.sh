@@ -30,7 +30,7 @@ function version_greater_or_equal() {
 dockerRepo="monogramm/docker-roundcube"
 # Retrieve automatically the latest versions
 latests=(
-	'1.3.9'
+	'1.3'
 	'1.4'
 )
 

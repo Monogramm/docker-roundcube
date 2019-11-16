@@ -1,4 +1,4 @@
-FROM monogramm/docker-roundcube-base:%%VERSION%%%%VARIANT%%
+FROM roundcube/roundcubemail:%%VERSION%%%%VARIANT%%
 
 LABEL maintainer="Monogramm Maintainers <opensource at monogramm dot io>"
 
