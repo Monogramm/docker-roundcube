@@ -4,19 +4,19 @@ set -eo pipefail
 declare -A compose=(
 	[apache]='apache'
 	[fpm]='fpm'
-	[alpine]='fpm'
+	[fpm-alpine]='fpm'
 )
 
 declare -A base=(
 	[apache]='debian'
 	[fpm]='debian'
-	[alpine]='alpine'
+	[fpm-alpine]='alpine'
 )
 
 variants=(
 	apache
 	fpm
-	alpine
+	fpm-alpine
 )
 
 min_version='1.3'
@@ -30,8 +30,8 @@ function version_greater_or_equal() {
 dockerRepo="monogramm/docker-roundcube"
 # Retrieve automatically the latest versions
 latests=(
-	'1.3'
-	'1.4'
+	'1.3.x'
+	'1.4.x'
 )
 
 # Remove existing images

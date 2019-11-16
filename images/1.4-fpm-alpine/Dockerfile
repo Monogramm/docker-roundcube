@@ -1,14 +1,20 @@
-FROM roundcube/roundcubemail:1.3.x-apache
+FROM roundcube/roundcubemail:1.4.x-fpm-alpine
 
 LABEL maintainer="Monogramm Maintainers <opensource at monogramm dot io>"
 
-# Add requirements for common extenions
+# Add requirements for common extenions (untested so far)
 RUN set -ex; \
-    apt-get update; \
-    apt-get install -y --no-install-recommends \
+    apk add --no-cache \
         git \
-        libgpgme11 \
-        libgpgme11-dev \
+        gpgme \
+    ; \
+    \
+	apk add --no-cache --virtual .build-deps \
+		$PHPIZE_DEPS \
+        autoconf \
+		gcc \
+		g++ \
+        gpgme-dev \
     ; \
     \
     curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer; \
@@ -39,6 +45,8 @@ RUN set -ex; \
         --prefer-dist --no-dev \
         --no-interaction \
         --optimize-autoloader --apcu-autoloader \
-        update;
+        update; \
+    \
+	apk --purge del .build-deps
 
 VOLUME /var/roundcube/keys
