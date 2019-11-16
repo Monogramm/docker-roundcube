@@ -37,6 +37,3 @@ env: # Environments
     - VERSION=1.4 VARIANT=fpm-alpine
     - VERSION=1.4 VARIANT=fpm
     - VERSION=1.4 VARIANT=apache
-    - VERSION=1.3 VARIANT=fpm-alpine
-    - VERSION=1.3 VARIANT=fpm
-    - VERSION=1.3 VARIANT=apache
