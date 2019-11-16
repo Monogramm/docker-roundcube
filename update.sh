@@ -31,7 +31,7 @@ dockerRepo="monogramm/docker-roundcube"
 # Retrieve automatically the latest versions
 latests=(
 	'1.3.9'
-	'1.4-rc1'
+	'1.4'
 )
 
 # Remove existing images
