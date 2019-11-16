@@ -18,7 +18,6 @@ Provides a RoundCube with additional extensions for integrations of additional p
 Additional plugins included:
 * https://github.com/sblaisot/automatic_addressbook
 * https://github.com/blind-coder/rcmcarddav
-* https://github.com/johndoh/roundcube-contextmenu
 
 ## What is RoundCube ?
 
@@ -35,9 +34,9 @@ https://hub.docker.com/r/monogramm/docker-roundcube/
     -	`1.4-fpm`, `1.4-fpm`, `production-fpm` (*images/1.4-fpm/Dockerfile*)
     -	`1.4-alpine`, `1.4-alpine`, `production-alpine` (*images/1.4-alpine/Dockerfile*)
 * `develop` branch
-    -	`latest-apache`, `latest` (*images/1.4-apache/Dockerfile*)
-    -	`latest-fpm` (*images/1.4-fpm/Dockerfile*)
-    -	`latest-alpine` (*images/1.4-alpine/Dockerfile*)
+    -	`apache`, `latest` (*images/1.4-apache/Dockerfile*)
+    -	`fpm` (*images/1.4-fpm/Dockerfile*)
+    -	`alpine` (*images/1.4-alpine/Dockerfile*)
 
 ## How to run this image ?
 
