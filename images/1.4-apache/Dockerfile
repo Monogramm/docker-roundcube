@@ -33,12 +33,15 @@ RUN set -ex; \
             pear/net_ldap2 \
             kolab/net_ldap3 \
             mkopinsky/zxcvbn-php \
+            sblaisot/automatic_addressbook \
+            roundcube/carddav \
+            johndoh/contextmenu \
     ; \
     composer \
         --working-dir=/usr/src/roundcubemail/ \
         --prefer-dist --no-dev \
         --no-interaction \
         --optimize-autoloader --apcu-autoloader \
-        update;
+        install;
 
 VOLUME /var/roundcube/keys
