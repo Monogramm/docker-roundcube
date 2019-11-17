@@ -36,6 +36,7 @@ RUN set -ex; \
             mkopinsky/zxcvbn-php \
             sblaisot/automatic_addressbook \
             roundcube/carddav \
+            texxasrulez/caldav_calendar \
     ; \
     composer \
         --working-dir=/usr/src/roundcubemail/ \
