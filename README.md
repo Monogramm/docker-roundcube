@@ -19,6 +19,7 @@ Additional plugins included:
 * https://github.com/sblaisot/automatic_addressbook
 * https://github.com/blind-coder/rcmcarddav
 
+Possible additional plugins:
 * https://github.com/texxasrulez/Caldav_Calendar
 
 ## What is RoundCube ?
