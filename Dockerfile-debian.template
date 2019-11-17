@@ -9,6 +9,7 @@ RUN set -ex; \
         git \
         libgpgme11 \
         libgpgme11-dev \
+        unzip \
     ; \
     \
     curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer; \

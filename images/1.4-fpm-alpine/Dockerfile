@@ -15,6 +15,7 @@ RUN set -ex; \
 		gcc \
 		g++ \
         gpgme-dev \
+        unzip \
     ; \
     \
     curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer; \
