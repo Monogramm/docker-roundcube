@@ -19,6 +19,8 @@ Additional plugins included:
 * https://github.com/sblaisot/automatic_addressbook
 * https://github.com/blind-coder/rcmcarddav
 
+* https://github.com/texxasrulez/Caldav_Calendar
+
 ## What is RoundCube ?
 
 Roundcube Webmail is a browser-based multilingual IMAP client with an application-like user interface.
@@ -42,9 +44,9 @@ https://hub.docker.com/r/monogramm/docker-roundcube/
 
 See RoundCube base image documentation for details.
 
-> [RoundCube GitHub](https://github.com/Monogramm/roundcubemail-docker)
+> [RoundCube GitHub](https://github.com/roundcube/roundcubemail-docker)
 
-> [RoundCube DockerHub](https://hub.docker.com/r/monogramm/docker-roundcube-base/)
+> [RoundCube DockerHub](https://hub.docker.com/r/roundcube/roundcubemail/)
 
 # Questions / Issues
 If you got any questions or problems using the image, please visit our [Github Repository](https://github.com/Monogramm/docker-roundcube) and write an issue.
