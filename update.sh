@@ -4,22 +4,22 @@ set -eo pipefail
 declare -A compose=(
 	[apache]='apache'
 	[fpm]='fpm'
-	[alpine]='fpm'
+	[fpm-alpine]='fpm'
 )
 
 declare -A base=(
 	[apache]='debian'
 	[fpm]='debian'
-	[alpine]='alpine'
+	[fpm-alpine]='alpine'
 )
 
 variants=(
 	apache
 	fpm
-	alpine
+	fpm-alpine
 )
 
-min_version='1.3'
+min_version='1.4'
 
 
 # version_greater_or_equal A B returns whether A >= B
@@ -30,13 +30,13 @@ function version_greater_or_equal() {
 dockerRepo="monogramm/docker-roundcube"
 # Retrieve automatically the latest versions
 latests=(
-	'1.3.9'
-	'1.4'
+	'1.3.x'
+	'1.4.x'
 )
 
 # Remove existing images
 echo "reset docker images"
-find ./images -maxdepth 1 -type d -regextype sed -regex '\./images/[[:digit:]]\+\.[[:digit:]]\+' -exec rm -r '{}' \;
+rm -rf ./images/*
 
 echo "update docker images"
 travisEnv=

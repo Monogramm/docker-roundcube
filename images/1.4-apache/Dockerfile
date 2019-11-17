@@ -1,6 +1,6 @@
-FROM monogramm/docker-roundcube-base:1.4-apache
+FROM roundcube/roundcubemail:1.4.x-apache
 
-LABEL maintainer="Mathieu BRUNOT <mathieu.brunot at monogramm dot io>"
+LABEL maintainer="Monogramm Maintainers <opensource at monogramm dot io>"
 
 # Add requirements for common extenions
 RUN set -ex; \
@@ -9,6 +9,7 @@ RUN set -ex; \
         git \
         libgpgme11 \
         libgpgme11-dev \
+        unzip \
     ; \
     \
     curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer; \
@@ -33,6 +34,8 @@ RUN set -ex; \
             pear/net_ldap2 \
             kolab/net_ldap3 \
             mkopinsky/zxcvbn-php \
+            sblaisot/automatic_addressbook \
+            roundcube/carddav \
     ; \
     composer \
         --working-dir=/usr/src/roundcubemail/ \
