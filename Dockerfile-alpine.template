@@ -47,7 +47,7 @@ RUN set -ex; \
         --prefer-dist --no-dev \
         --no-interaction \
         --optimize-autoloader --apcu-autoloader \
-        install; \
+        update; \
     \
 	apk --purge del .build-deps
 

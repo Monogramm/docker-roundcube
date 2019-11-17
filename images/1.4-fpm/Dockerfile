@@ -41,6 +41,6 @@ RUN set -ex; \
         --prefer-dist --no-dev \
         --no-interaction \
         --optimize-autoloader --apcu-autoloader \
-        install;
+        update;
 
 VOLUME /var/roundcube/keys
