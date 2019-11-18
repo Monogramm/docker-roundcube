@@ -53,6 +53,14 @@ RUN set -ex; \
         --optimize-autoloader --apcu-autoloader \
         update; \
     \
+    mv \
+        /usr/src/roundcubemail/plugins/caldav_calendar/calendar \
+        /usr/src/roundcubemail/plugins/caldav_calendar/libcalendaring \
+        /usr/src/roundcubemail/plugins/ \
+    ; \
+    rm -rf \
+        /usr/src/roundcubemail/plugins/caldav_calendar \
+    ; \
 	apk --purge del .build-deps
 
 VOLUME /var/roundcube/keys

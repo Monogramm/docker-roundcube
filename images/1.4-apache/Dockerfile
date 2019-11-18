@@ -45,6 +45,14 @@ RUN set -ex; \
         --prefer-dist --no-dev \
         --no-interaction \
         --optimize-autoloader --apcu-autoloader \
-        update;
+        update; \
+    mv \
+        /usr/src/roundcubemail/plugins/caldav_calendar/calendar \
+        /usr/src/roundcubemail/plugins/caldav_calendar/libcalendaring \
+        /usr/src/roundcubemail/plugins/ \
+    ; \
+    rm -rf \
+        /usr/src/roundcubemail/plugins/caldav_calendar \
+    ;
 
 VOLUME /var/roundcube/keys
