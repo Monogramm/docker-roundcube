@@ -37,7 +37,7 @@ RUN set -ex; \
             johndoh/contextmenu \
             sblaisot/automatic_addressbook \
             roundcube/carddav \
-            texxasrulez/caldav_calendar \
+            texxasrulez/caldav_calendar:dev-master \
             boressoft/ident_switch \
     ; \
     composer \
