@@ -16,11 +16,11 @@ Custom Docker image for RoundCube.
 Provides a RoundCube with additional extensions for integrations of additional plugins.
 
 Additional plugins included:
-* https://github.com/sblaisot/automatic_addressbook
-* https://github.com/blind-coder/rcmcarddav
-
-Possible additional plugins:
-* https://github.com/texxasrulez/Caldav_Calendar
+* https://plugins.roundcube.net/packages/johndoh/contextmenu
+* https://plugins.roundcube.net/packages/sblaisot/automatic_addressbook
+* https://plugins.roundcube.net/packages/roundcube/carddav
+* https://plugins.roundcube.net/packages/texxasrulez/caldav_calendar
+* https://plugins.roundcube.net/packages/boressoft/ident_switch
 
 ## What is RoundCube ?
 

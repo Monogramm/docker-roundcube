@@ -40,9 +40,11 @@ RUN set -ex; \
             pear/net_ldap2 \
             kolab/net_ldap3 \
             mkopinsky/zxcvbn-php \
+            johndoh/contextmenu \
             sblaisot/automatic_addressbook \
             roundcube/carddav \
             texxasrulez/caldav_calendar \
+            boressoft/ident_switch \
     ; \
     composer \
         --working-dir=/usr/src/roundcubemail/ \
