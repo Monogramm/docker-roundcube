@@ -44,7 +44,7 @@ RUN set -ex; \
             sblaisot/automatic_addressbook \
             roundcube/carddav \
             texxasrulez/caldav_calendar:dev-master \
-            boressoft/ident_switch \
+            boressoft/ident_switch:dev-master \
     ; \
     composer \
         --working-dir=/usr/src/roundcubemail/ \

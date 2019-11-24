@@ -20,7 +20,7 @@ Additional plugins included:
 * https://plugins.roundcube.net/packages/sblaisot/automatic_addressbook
 * https://plugins.roundcube.net/packages/roundcube/carddav
 * https://plugins.roundcube.net/packages/texxasrulez/caldav_calendar
-* https://plugins.roundcube.net/packages/boressoft/ident_switch
+* https://plugins.roundcube.net/packages/boressoft/ident_switch [on dev-master](https://bitbucket.org/BoresExpress/ident_switch/issues/52/new-releases-do-not-appear-in)
 
 ## What is RoundCube ?
 
