@@ -84,7 +84,7 @@ for latest in "${latests[@]}"; do
 			# Create a list of "alias" tags for DockerHub post_push
 			if [ "$latest" = "$dockerLatest" ]; then
 				if [ "$variant" = 'apache' ]; then
-					echo "$latest-$variant $version-$variant $variant $latest latest " > "$dir/.dockertags"
+					echo "$latest-$variant $version-$variant $variant $latest $version latest " > "$dir/.dockertags"
 				else
 					echo "$latest-$variant $version-$variant $variant " > "$dir/.dockertags"
 				fi

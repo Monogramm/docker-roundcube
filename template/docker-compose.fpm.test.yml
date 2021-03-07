@@ -24,7 +24,12 @@ services:
       - /etc/timezone:/etc/timezone:ro
 
   roundcube:
-    build: ./
+    build:
+      context: .
+      dockerfile: ${DOCKERFILE_PATH}
+      args:
+        - TAG=${DOCKER_TAG}
+    image: ${IMAGE_NAME}
     container_name: roundcube
     #restart: always
     depends_on:
@@ -78,7 +83,7 @@ services:
     #ports:
     #  - "8080:80"
     #  # If you need SSL connection
-    #  - '8443:443'
+    #  - "8443:443"
     depends_on:
       - roundcube
     links:

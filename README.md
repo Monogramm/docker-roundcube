@@ -1,5 +1,5 @@
 [![License: GPL v3][uri_license_image]][uri_license]
-[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/Monogramm/vue-symfony-starter/Docker%20Image%20CI)](https://github.com/Monogramm/docker-roundcube)
+[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/Monogramm/docker-roundcube/Docker%20Image%20CI)](https://github.com/Monogramm/docker-roundcube)
 [![Docker Automated buid](https://img.shields.io/docker/cloud/build/monogramm/docker-roundcube.svg)](https://hub.docker.com/r/monogramm/docker-roundcube/)
 [![Docker Pulls](https://img.shields.io/docker/pulls/monogramm/docker-roundcube.svg)](https://hub.docker.com/r/monogramm/docker-roundcube/)
 [![](https://images.microbadger.com/badges/version/monogramm/docker-roundcube.svg)](https://microbadger.com/images/monogramm/docker-roundcube)
@@ -30,10 +30,9 @@ Roundcube Webmail is a browser-based multilingual IMAP client with an applicatio
 
 <https://hub.docker.com/r/monogramm/docker-roundcube/>
 
--   `master` branch
-    -   `1.4-apache`, `1.4-apache`, `production-apache`, `1.4`, `production` `apache`, `latest` (_images/1.4-apache/Dockerfile_)
-    -   `1.4-fpm`, `1.4-fpm`, `production-fpm` `fpm` (_images/1.4-fpm/Dockerfile_)
-    -   `1.4-alpine`, `1.4-alpine`, `production-alpine` `alpine` (_images/1.4-alpine/Dockerfile_)
+-   `1.4.x-apache`, `1.4-apache`, `1.4` `apache`, `latest` (_images/1.4-apache/Dockerfile_)
+-   `1.4.x-fpm`, `1.4-fpm` `fpm` (_images/1.4-fpm/Dockerfile_)
+-   `1.4.x-alpine`, `1.4-alpine` `alpine` (_images/1.4-alpine/Dockerfile_)
 
 ## How to run this image
 
