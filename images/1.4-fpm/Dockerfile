@@ -12,7 +12,7 @@ RUN set -ex; \
         unzip \
     ; \
     \
-    curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer; \
+    curl -sS 'https://getcomposer.org/installer' | php -- --install-dir=/usr/bin --filename=composer; \
     mv \
         /usr/src/roundcubemail/composer.json-dist \
         /usr/src/roundcubemail/composer.json; \

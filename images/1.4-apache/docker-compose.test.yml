@@ -1,0 +1,81 @@
+version: "2.3"
+
+volumes:
+  db:
+  data:
+
+services:
+  # https://docs.docker.com/docker-hub/builds/automated-testing/
+  sut:
+    build:
+      context: ./test
+      dockerfile: Dockerfile
+    command: sh /docker_test.sh
+    depends_on:
+      - roundcube
+    environment:
+      - DOCKER_TEST_CONTAINER=roundcube
+      - DOCKER_WEB_CONTAINER=roundcube
+    volumes_from:
+      - roundcube
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
+
+  roundcube:
+    build:
+      context: .
+      dockerfile: ${DOCKERFILE_PATH}
+      args:
+        - TAG=${DOCKER_TAG}
+    image: ${IMAGE_NAME}
+    container_name: roundcube
+    #restart: always
+    depends_on:
+      roundcubedb:
+        condition: service_healthy
+    links:
+      - roundcubedb
+    expose:
+      - "80"
+    #ports:
+    #  - "8080:80"
+    volumes:
+      - data:/var/www/html
+      #- /srv/roundcube/html:/var/www/html
+    environment:
+      - ROUNDCUBEMAIL_DB_TYPE=mysql
+      - ROUNDCUBEMAIL_DB_HOST=roundcubedb # same as mysql container name
+      - ROUNDCUBEMAIL_DB_NAME=${ROUNDCUBE_DB_NAME}
+      - ROUNDCUBEMAIL_DB_USER=${ROUNDCUBE_DB_USER}
+      - ROUNDCUBEMAIL_DB_PASSWORD=${ROUNDCUBE_DB_PWD}
+
+  roundcubedb:
+    image: mariadb:latest
+    container_name: roundcubedb
+    restart: always
+    command: --character_set_client=utf8 --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci --character-set-client-handshake=FALSE
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "mysqladmin",
+          "ping",
+          "-h",
+          "localhost",
+          "--password=${ROUNDCUBE_DB_ROOT_PWD}",
+        ]
+      timeout: 10s
+      retries: 5
+    expose:
+      - "3306"
+    #ports:
+    #  - "33306:3306"
+    volumes:
+      - db:/var/lib/mysql
+      #- /srv/roundcube/db:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=${ROUNDCUBE_DB_ROOT_PWD}
+      - MYSQL_DATABASE=${ROUNDCUBE_DB_NAME}
+      - MYSQL_USER=${ROUNDCUBE_DB_USER}
+      - MYSQL_PASSWORD=${ROUNDCUBE_DB_PWD}

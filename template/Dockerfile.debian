@@ -2,23 +2,17 @@ FROM roundcube/roundcubemail:%%VERSION%%%%VARIANT%%
 
 LABEL maintainer="Monogramm Maintainers <opensource at monogramm dot io>"
 
-# Add requirements for common extenions (untested so far)
+# Add requirements for common extenions
 RUN set -ex; \
-    apk add --no-cache \
+    apt-get update; \
+    apt-get install -y --no-install-recommends \
         git \
-        gpgme \
-    ; \
-    \
-	apk add --no-cache --virtual .build-deps \
-		$PHPIZE_DEPS \
-        autoconf \
-		gcc \
-		g++ \
-        gpgme-dev \
+        libgpgme11 \
+        libgpgme11-dev \
         unzip \
     ; \
     \
-    curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer; \
+    curl -sS 'https://getcomposer.org/installer' | php -- --install-dir=/usr/bin --filename=composer; \
     mv \
         /usr/src/roundcubemail/composer.json-dist \
         /usr/src/roundcubemail/composer.json; \
@@ -48,8 +42,6 @@ RUN set -ex; \
         --prefer-dist --no-dev \
         --no-interaction \
         --optimize-autoloader --apcu-autoloader \
-        update; \
-    \
-	apk --purge del .build-deps
+        update;
 
 VOLUME /var/roundcube/keys

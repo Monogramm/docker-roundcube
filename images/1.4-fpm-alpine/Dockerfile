@@ -9,16 +9,16 @@ RUN set -ex; \
         gpgme \
     ; \
     \
-	apk add --no-cache --virtual .build-deps \
-		$PHPIZE_DEPS \
+    apk add --no-cache --virtual .build-deps \
+        $PHPIZE_DEPS \
         autoconf \
-		gcc \
-		g++ \
+        gcc \
+        g++ \
         gpgme-dev \
         unzip \
     ; \
     \
-    curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer; \
+    curl -sS 'https://getcomposer.org/installer' | php -- --install-dir=/usr/bin --filename=composer; \
     mv \
         /usr/src/roundcubemail/composer.json-dist \
         /usr/src/roundcubemail/composer.json; \
@@ -50,6 +50,6 @@ RUN set -ex; \
         --optimize-autoloader --apcu-autoloader \
         update; \
     \
-	apk --purge del .build-deps
+    apk --purge del .build-deps
 
 VOLUME /var/roundcube/keys

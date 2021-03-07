@@ -20,6 +20,7 @@ variants=(
 )
 
 min_version='1.4'
+dockerLatest='1.4.x'
 
 
 # version_greater_or_equal A B returns whether A >= B
@@ -43,10 +44,6 @@ travisEnv=
 for latest in "${latests[@]}"; do
 	version=$(echo "$latest" | cut -d. -f1-2)
 
-	if [ -d "$version" ]; then
-		continue
-	fi
-
 	# Only add versions >= "$min_version"
 	if version_greater_or_equal "$version" "$min_version"; then
 
@@ -55,10 +52,23 @@ for latest in "${latests[@]}"; do
 
 			# Create the version directory with a Dockerfile.
 			dir="images/$version-$variant"
+			if [ -d "$dir" ]; then
+				continue
+			fi
 			mkdir -p "$dir"
 
-			template="Dockerfile-${base[$variant]}.template"
-			cp "$template" "$dir/Dockerfile"
+			template="Dockerfile.${base[$variant]}"
+			cp "template/$template" "$dir/Dockerfile"
+
+			cp -r "template/hooks/" "$dir/"
+			cp -r "template/test/" "$dir/"
+			cp "template/.env" "$dir/.env"
+			cp "template/.dockerignore" "$dir/.dockerignore"
+			cp "template/docker-compose.${compose[$variant]}.test.yml" "$dir/docker-compose.test.yml"
+			
+			if ! [ "$variant" = 'apache' ]; then
+				cp -r "template/nginx/" "$dir/"
+			fi
 
 			# Replace the variables.
 			sed -ri -e '
@@ -66,15 +76,33 @@ for latest in "${latests[@]}"; do
 				s/%%VERSION%%/'"$latest"'/g;
 			' "$dir/Dockerfile"
 
-			cp ".dockerignore" "$dir/.dockerignore"
-			cp "docker-compose_${compose[$variant]}.yml" "$dir/docker-compose.yml"
+			sed -ri -e '
+				s|DOCKER_TAG=.*|DOCKER_TAG='"$version"'|g;
+				s|DOCKER_REPO=.*|DOCKER_REPO='"$dockerRepo"'|g;
+			' "$dir/hooks/run"
 
+			# Create a list of "alias" tags for DockerHub post_push
+			if [ "$latest" = "$dockerLatest" ]; then
+				if [ "$variant" = 'apache' ]; then
+					echo "$latest-$variant $version-$variant $variant $latest latest " > "$dir/.dockertags"
+				else
+					echo "$latest-$variant $version-$variant $variant " > "$dir/.dockertags"
+				fi
+			else
+				if [ "$variant" = 'apache' ]; then
+					echo "$latest-$variant $version-$variant $latest $version " > "$dir/.dockertags"
+				else
+					echo "$latest-$variant $version-$variant " > "$dir/.dockertags"
+				fi
+			fi
+
+			# Add Travis-CI env var
 			travisEnv='\n    - VERSION='"$version"' VARIANT='"$variant$travisEnv"
 
 			if [[ $1 == 'build' ]]; then
 				tag="$version-$variant"
 				echo "Build Dockerfile for ${tag}"
-				docker build -t ${dockerRepo}:${tag} $dir
+				docker build -t "${dockerRepo}:${tag}" "$dir"
 			fi
 		done
 	fi
