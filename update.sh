@@ -1,6 +1,12 @@
 #!/bin/bash
 set -eo pipefail
 
+declare -A conf=(
+	[apache]=''
+	[fpm]='nginx'
+	[fpm-alpine]='nginx'
+)
+
 declare -A compose=(
 	[apache]='apache'
 	[fpm]='fpm'
@@ -65,9 +71,9 @@ for latest in "${latests[@]}"; do
 			cp "template/.env" "$dir/.env"
 			cp "template/.dockerignore" "$dir/.dockerignore"
 			cp "template/docker-compose.${compose[$variant]}.test.yml" "$dir/docker-compose.test.yml"
-			
-			if ! [ "$variant" = 'apache' ]; then
-				cp -r "template/nginx/" "$dir/"
+
+			if [ -n "${conf[$variant]}" ] && [ -d "template/${conf[$variant]}" ]; then
+				cp -r "template/${conf[$variant]}" "$dir/${conf[$variant]}"
 			fi
 
 			# Replace the variables.
