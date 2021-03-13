@@ -15,10 +15,14 @@ Additional plugins included:
 
 -   <https://github.com/sblaisot/automatic_addressbook>
 -   <https://github.com/blind-coder/rcmcarddav>
+-   <https://github.com/JohnDoh/roundcube-contextmenu>
+-   <https://bitbucket.org/BoresExpress/ident_switch.git>
 
+<!--
 Possible additional plugins:
 
 -   <https://github.com/texxasrulez/Caldav_Calendar>
+-->
 
 ## What is RoundCube
 

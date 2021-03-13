@@ -36,6 +36,8 @@ RUN set -ex; \
             mkopinsky/zxcvbn-php \
             sblaisot/automatic_addressbook \
             roundcube/carddav \
+            boressoft/ident_switch \
+            johndoh/contextmenu \
     ; \
     composer \
         --working-dir=/usr/src/roundcubemail/ \

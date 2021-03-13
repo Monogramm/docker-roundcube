@@ -45,6 +45,12 @@ services:
       - data:/var/www/html
       #- /srv/roundcube/html:/var/www/html
     environment:
+      # System properties
+      - ROUNDCUBEMAIL_MEMORY_LIMIT=128M
+      - ROUNDCUBEMAIL_UPLOAD_MAX_FILESIZE=25M
+      # Built-in plugins to activate
+      - ROUNDCUBEMAIL_PLUGINS=archive,attachment_reminder,identicon,markasjunk,vcard_attachments,zipdownload,contextmenu,carddav,ident_switch
+      # Database connection
       - ROUNDCUBEMAIL_DB_TYPE=pgsql
       - ROUNDCUBEMAIL_DB_HOST=roundcubedb # same as pgsql container name
       - ROUNDCUBEMAIL_DB_NAME=${ROUNDCUBE_DB_NAME}
