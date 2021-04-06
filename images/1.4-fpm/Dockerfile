@@ -1,4 +1,4 @@
-FROM roundcube/roundcubemail:1.4.x-fpm
+FROM roundcube/roundcubemail:1.4.11-fpm
 
 LABEL maintainer="Monogramm Maintainers <opensource at monogramm dot io>"
 

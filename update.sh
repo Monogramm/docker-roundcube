@@ -26,7 +26,7 @@ variants=(
 )
 
 min_version='1.4'
-dockerLatest='1.4.x'
+dockerLatest='1.4'
 
 
 # version_greater_or_equal A B returns whether A >= B
@@ -36,9 +36,10 @@ function version_greater_or_equal() {
 
 dockerRepo="monogramm/docker-roundcube"
 # Retrieve automatically the latest versions
-latests=(
-	'1.3.x'
-	'1.4.x'
+latests=( $( curl -fsSL 'https://api.github.com/repos/roundcube/roundcubemail-docker/tags' |tac|tac| \
+	grep -oE '[[:digit:]]+\.[[:digit:]]+\.[[:digit:]]+' | \
+	sort -urV )
+	#1.4.x
 )
 
 # Remove existing images
@@ -54,13 +55,12 @@ for latest in "${latests[@]}"; do
 	if version_greater_or_equal "$version" "$min_version"; then
 
 		for variant in "${variants[@]}"; do
-			echo "updating $latest [$version-$variant]"
-
 			# Create the version directory with a Dockerfile.
 			dir="images/$version-$variant"
 			if [ -d "$dir" ]; then
 				continue
 			fi
+			echo "updating $latest [$version-$variant]"
 			mkdir -p "$dir"
 
 			template="Dockerfile.${base[$variant]}"
@@ -88,7 +88,7 @@ for latest in "${latests[@]}"; do
 			' "$dir/hooks/run"
 
 			# Create a list of "alias" tags for DockerHub post_push
-			if [ "$latest" = "$dockerLatest" ]; then
+			if [ "$version" = "$dockerLatest" ]; then
 				if [ "$variant" = 'apache' ]; then
 					echo "$latest-$variant $version-$variant $variant $latest $version latest " > "$dir/.dockertags"
 				else
