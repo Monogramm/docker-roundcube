@@ -10,19 +10,22 @@ branches:
     - develop
     - master
 
-before_script:
+before_install:
   - env | sort
   - dir="images/${VERSION}${VARIANT:+-$VARIANT}"
 
+install:
+  - cd "$dir"
+  # Build project
+  - ./hooks/run build
+
+before_script:
+  - docker images
+
 script:
   - cd "$dir"
-  - docker-compose build
-  - docker images
-  - travis_retry docker-compose up -d && sleep 60
-  - docker-compose ps
-  - docker-compose logs
-  - docker-compose ps "roundcubedb" | grep "Up"
-  - docker-compose ps "roundcube" | grep "Up"
+  # Execute project CI Tests
+  - ./hooks/run test
 
 notifications:
   email: false

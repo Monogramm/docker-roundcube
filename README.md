@@ -34,9 +34,10 @@ Roundcube Webmail is a browser-based multilingual IMAP client with an applicatio
 
 <https://hub.docker.com/r/monogramm/docker-roundcube/>
 
--   `1.4.x-apache`, `1.4-apache`, `1.4` `apache`, `latest` (_images/1.4-apache/Dockerfile_)
--   `1.4.x-fpm`, `1.4-fpm` `fpm` (_images/1.4-fpm/Dockerfile_)
--   `1.4.x-alpine`, `1.4-alpine` `alpine` (_images/1.4-alpine/Dockerfile_)
+Tags:
+-   `images/1.4-apache/Dockerfile`: 1.4.11-apache 1.4-apache apache 1.4.11 1.4 latest <!--+tags-->
+-   `images/1.4-fpm/Dockerfile`: 1.4.11-fpm 1.4-fpm fpm <!--+tags-->
+-   `images/1.4-fpm-alpine/Dockerfile`: 1.4.11-fpm-alpine 1.4-fpm-alpine fpm-alpine <!--+tags-->
 
 ## How to run this image
 

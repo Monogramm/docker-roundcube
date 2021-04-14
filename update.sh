@@ -27,6 +27,7 @@ variants=(
 
 min_version='1.4'
 dockerLatest='1.4'
+dockerDefaultVariant='apache'
 
 
 # version_greater_or_equal A B returns whether A >= B
@@ -48,6 +49,7 @@ rm -rf ./images/*
 
 echo "update docker images"
 travisEnv=
+readmeTags=
 for latest in "${latests[@]}"; do
 	version=$(echo "$latest" | cut -d. -f1-2)
 
@@ -89,13 +91,13 @@ for latest in "${latests[@]}"; do
 
 			# Create a list of "alias" tags for DockerHub post_push
 			if [ "$version" = "$dockerLatest" ]; then
-				if [ "$variant" = 'apache' ]; then
+				if [ "$variant" = "$dockerDefaultVariant" ]; then
 					echo "$latest-$variant $version-$variant $variant $latest $version latest " > "$dir/.dockertags"
 				else
 					echo "$latest-$variant $version-$variant $variant " > "$dir/.dockertags"
 				fi
 			else
-				if [ "$variant" = 'apache' ]; then
+				if [ "$variant" = "$dockerDefaultVariant" ]; then
 					echo "$latest-$variant $version-$variant $latest $version " > "$dir/.dockertags"
 				else
 					echo "$latest-$variant $version-$variant " > "$dir/.dockertags"
@@ -104,6 +106,9 @@ for latest in "${latests[@]}"; do
 
 			# Add Travis-CI env var
 			travisEnv='\n    - VERSION='"$version"' VARIANT='"$variant$travisEnv"
+
+			# Add README.md tags
+			readmeTags="$readmeTags\n-   \`$dir/Dockerfile\`: $(cat $dir/.dockertags)<!--+tags-->"
 
 			if [[ $1 == 'build' ]]; then
 				tag="$version-$variant"
@@ -118,3 +123,8 @@ done
 # update .travis.yml
 travis="$(awk -v 'RS=\n\n' '$1 == "env:" && $2 == "#" && $3 == "Environments" { $0 = "env: # Environments'"$travisEnv"'" } { printf "%s%s", $0, RS }' .travis.yml)"
 echo "$travis" > .travis.yml
+
+# update README.md
+sed -i -e '/^-   .*<!--+tags-->/d' README.md
+readme="$(awk -v 'RS=\n\n' '$1 == "Tags:" { $0 = "Tags:'"$readmeTags"'" } { printf "%s%s", $0, RS }' README.md)"
+echo "$readme" > README.md
